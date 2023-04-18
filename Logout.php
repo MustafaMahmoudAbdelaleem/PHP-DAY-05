@@ -1,10 +1,10 @@
-<?php 
+<?php
+    //close current session //
+    session_start();
+    $_SESSION = array();
+    session_destroy();
 
-session_start();
-session_unset();
-session_destroy();
-header('location: login.php');
-exit;
-
-
+    //clear all cookies     
+    setcookie('PHPSESSID','',time()-10);
+    header('location: login.php');
 ?>
