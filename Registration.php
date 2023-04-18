@@ -4,10 +4,10 @@
         $user_name = $_POST['userName'];
         $password = $_POST['password'];
         // store data in cookies
-        setcookie('userName' ,$user_name,time()+60);
-        setcookie('password' ,$password,time()+60);
+        setcookie('userName' ,$user_name,time()+30);
+        setcookie('password' ,$password,time()+30);
         //store data in database
-        include('db.php');
+        include('DB.php');
         if(!$conn){
             die("something went wrong couldn't conneect to database".mysqli_connect_error());
         }
@@ -17,7 +17,7 @@
             die("cannot insert data" .mysqli_connect_error());
         }        
         mysqli_close($conn);
-        header('location: login.php');
+        header('location: Login.php');
     }
     
 ?>
