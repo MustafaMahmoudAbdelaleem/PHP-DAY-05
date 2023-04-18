@@ -1,51 +1,35 @@
-<?php
-session_start();
-
-$host = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "PHPD5";
-            $conn = mysqli_connect($host, $username, $password, $dbname);
-
-            if (!$conn) {
-            	die("Connection failed: " . mysqli_connect_error());
-            }
-
-        //     if(isset($_SESSION['USER_ID']) && isset($_SESSION['Uname'])){
-           
-        //         $_SESSION['USER_ID'] = $row['id'];
-        //         $_SESSION['Uname'] = $row['user_name'];
-        // //    unset($_SESSION['USER_ID']);
-        //    unset($_SESSION['USER_NAME']);
-         //    die();
-        //     }
-if (isset($_SESSION['Uname']) && isset($_SESSION['USER_ID'])) {
-	$username = $_SESSION['Uname'];
-	// echo "Hello $username!";
-} else {
-	header("Location: login.php");
-	exit();
-}
-?> 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Signup</title>
 </head>
 <body>
-<h1>welcome <?php echo $username ?>!!</h1>
-
-   
-<div class="btn btn">
-    <a href="./logout.php"><button class="btn btn-outline-danger">SIGN OUT</button></a>
-</div>
-
-</body>
-</html>
+    <div class="container mt-5">
+        <h1>Sign Up</h1>
+        <p><small>Fill The Following Form </small></p>
+        <div class="row">
+            <div class="col-12">
+                <form method="POST" action="Registeration.php">
+                    <div class="mb-3">
+                        <label class="form-label" for="userName">Username</label>
+                        <input type="text" class="form-control" name="userName" id="userName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="password">password</label>
+                        <input type="password" class="form-control" name="password" id="password" required>
+                    </div>
+                    <input class="btn btn-primary" type="submit" name="submit" value="signup">
+                    <input class="btn btn-secondary" type="button" name="reset" value="reset">
+                </form>
+                <div class="my-3">
+                    <p><small>Already have an account<span><a style="text-decoration:none;" href="Login.php"> Login here</a></span></small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body> 
+</html>   
